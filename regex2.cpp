@@ -20,6 +20,9 @@ using std::regex_search;
 // Main program
 int main()
 {
+    // ******************************************************
+    // * EDIT THE FOLLOWING STRING TO CHANGE THE REGEX USED *
+    // ******************************************************
     regex re1("ab*c");  // Our regular expression
 
     // Read stdin & print info on each line matched by above regex.

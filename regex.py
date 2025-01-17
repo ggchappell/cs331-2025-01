@@ -10,6 +10,9 @@ import re   # For .search
 import sys  # for .stdin, .exit
 
 
+# ******************************************************
+# * EDIT THE FOLLOWING STRING TO CHANGE THE REGEX USED *
+# ******************************************************
 regexstr = r"ab*c"  # Our regular expression
                     # (r"..." gives a "raw" string literal, without
                     # backslash escaping)
