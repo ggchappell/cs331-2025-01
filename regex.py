@@ -11,6 +11,8 @@ import sys  # for .stdin, .exit
 
 
 regexstr = r"ab*c"  # Our regular expression
+                    # (r"..." gives a "raw" string literal, without
+                    # backslash escaping)
 
 
 def main():
@@ -18,11 +20,17 @@ def main():
     for line in (sys.stdin):
         line = line.rstrip("\r\n")  # Remove EOL chars
 
-        mo = re.search(regexstr, line)
-        if mo:
-            print(line + ": MATCHED [" + mo[0] + "]")
+        match_obj = re.search(regexstr, line)
+        if match_obj:
+            print(line + ": MATCHED [" + match_obj[0] + "]")
 
     return 0
+
+# When a regex is used repeatedly, save time by "compiling" it to a
+# regex object:
+#   regex_obj = re.compile(r"ab*c")
+#   ...
+#   match_obj = regex_obj.search(line)
 
 
 # Main program
