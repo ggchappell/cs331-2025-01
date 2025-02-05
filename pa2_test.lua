@@ -1,7 +1,8 @@
 #!/usr/bin/env lua
 -- pa2_test.lua
 -- Glenn G. Chappell
--- 2025-02-03
+-- Started: 2025-02-03
+-- Updated: 2025-02-05
 --
 -- For CS 331 Spring 2025
 -- Test Program for Assignment 2 Functions
@@ -123,7 +124,7 @@ function printValue(...)
     elseif type(x) == "number" then
         io.write(x)
     elseif type(x) == "string" then
-        io.write('"'..x..'"')
+        io.write(string.format('%q', x))
     elseif type(x) == "boolean" then
         if x then
             io.write("true")
@@ -469,32 +470,38 @@ function test_mostCommon(t)
     inv = "severance"
     expect = "e"
     test(t, inv, expect,
-      "example #1 from assignment description (\""..inv.."\")")
+      "example #1 from assignment description ("
+        ..string.format('%q',inv)..")")
 
     inv = "abbbaa"
     expect = "a"
     test(t, inv, expect,
-      "example #2 from assignment description (\""..inv.."\")")
+      "example #2 from assignment description ("
+        ..string.format('%q',inv)..")")
 
     inv = "Mississippi"
     expect = "i"
     test(t, inv, expect,
-      "example #3 from assignment description (\""..inv.."\")")
+      "example #3 from assignment description ("
+        ..string.format('%q',inv)..")")
 
     inv = "%"
     expect = "%"
     test(t, inv, expect,
-      "example #4 from assignment description (\""..inv.."\")")
+      "example #4 from assignment description ("
+        ..string.format('%q',inv)..")")
 
     inv = ""
     expect = ""
     test(t, inv, expect,
-      "example #5 from assignment description (\""..inv.."\")")
+      "example #5 from assignment description ("
+        ..string.format('%q',inv)..")")
 
     inv = "I like coconuts and pears!"
     expect = " "
     test(t, inv, expect,
-      "example #6 from assignment description (\""..inv.."\")")
+      "example #6 from assignment description ("
+        ..string.format('%q',inv)..")")
 end
 
 
@@ -522,17 +529,20 @@ function test_prefixSuffix(t)
     inv = "wxyz"
     expect = { "", "w", "wx", "wxy", "wxyz", "xyz", "yz", "z" }
     test(t, inv, expect,
-           "example #1 from assignment description (\""..inv.."\")")
+           "example #1 from assignment description ("
+             ..string.format('%q',inv)..")")
 
     inv = "@"
     expect = { "", "@" }
     test(t, inv, expect,
-           "example #2 from assignment description (\""..inv.."\")")
+           "example #2 from assignment description ("
+             ..string.format('%q',inv)..")")
 
     inv = ""
     expect = { "" }
     test(t, inv, expect,
-           "example #3 from assignment description (\""..inv.."\")")
+           "example #3 from assignment description ("
+             ..string.format('%q',inv)..")")
 
     local longlen = 10000
 
