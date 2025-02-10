@@ -42,6 +42,9 @@ local lexstr = ""   -- String form of current lexeme
 local lexcat = 0    -- Category of current lexeme:
                     --  one of categories below, or 0 for past the end
 
+-- For last matched lexeme
+local matched = ""  -- String form of last matched lexeme
+
 
 -- *********************************************************************
 -- Utility Functions
@@ -83,11 +86,12 @@ end
 
 -- matchString
 -- Given string, see if current lexeme string form is equal to it. If
--- so, then advance to next lexeme & return true. If not, then do not
--- advance, return false.
+-- so, then set "matched" to the matched string, advance to next lexeme
+-- & return true. If not, then do not advance, return false.
 -- Function init must be called before this function is called.
 local function matchString(s)
     if lexstr == s then
+        matched = lexstr
         advance()
         return true
     else
@@ -98,11 +102,13 @@ end
 
 -- matchCat
 -- Given lexeme category (integer), see if current lexeme category is
--- equal to it. If so, then advance to next lexeme & return true. If
--- not, then do not advance, return false.
+-- equal to it. If so, then set "matched" to the string form of the
+-- matched lexeme, advance to next lexeme & return true. If not, then do
+-- not advance, return false.
 -- Function init must be called before this function is called.
 local function matchCat(c)
     if lexcat == c then
+        matched = lexstr
         advance()
         return true
     else
