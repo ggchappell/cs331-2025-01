@@ -1,6 +1,7 @@
--- rdparser1.lua  UNFINISHED
+-- rdparser1.lua
 -- Glenn G. Chappell
--- 2025-02-09
+-- Started: 2025-02-09
+-- Updated: 2025-02-10
 --
 -- For CS 331 Spring 2025
 -- Recursive-Descent Parser #1: Simple
@@ -123,6 +124,7 @@ end
 
 
 local parse_item
+local parse_value
 
 
 -- *********************************************************************
@@ -132,16 +134,19 @@ local parse_item
 
 -- parse
 -- Given program, initialize parser and call parsing function for start
--- symbol. Returns a boolean, indicating successful parse or not.
+-- symbol. Returns pair of booleans. First indicates successful parse or
+-- not. Second indicates whether the parser reached the end of the
+-- input or not.
 function rdparser1.parse(prog)
     -- Initialization
     init(prog)
 
-    -- Get result from parsing
+    -- Get results from parsing
     local good = parse_item()  -- Parse start symbol
+    local done = atEnd()
 
-    -- And return it
-    return good
+    -- And return them
+    return good, done
 end
 
 
@@ -165,8 +170,43 @@ end
 -- Parsing function for nonterminal "item".
 -- Function init must be called before this function is called.
 function parse_item()
-    -- TODO: WRITE THIS!!!
-    return false  -- DUMMY
+    if matchString("(") then
+        if not parse_item() then
+            return false
+        end
+        if not matchString(")") then
+            return false
+        end
+        -- We would construct an AST here
+        return true
+    elseif parse_value() then
+        -- We would construct an AST here
+        return true
+    else
+        return false
+    end
+end
+
+
+-- parse_value
+-- Parsing function for nonterminal "value".
+-- Function init must be called before this function is called.
+function parse_value()
+    if matchCat(lexer.NUMLIT) then
+        -- We would construct an AST here
+        return true
+    elseif matchString("*") then
+        if not matchString("-") then
+            return false
+        end
+        if not matchString("*") then
+            return false
+        end
+        -- We would construct an AST here
+        return true
+    else
+        return false
+    end
 end
 
 
