@@ -1,7 +1,8 @@
 #!/usr/bin/env lua
 -- use_rdparser2.lua
 -- Glenn G. Chappell
--- 2025-02-11
+-- Started: 2025-02-11
+-- Updated: 2025-02-12
 --
 -- For CS 331 Spring 2025
 -- Simple Main Program for rdparser2 Module
@@ -71,6 +72,7 @@ check("(((42))")
 check("((42)))")
 check("1,2,3")
 check("1;2,3;4;5")
+check("1,;2,3")
 check("ab[12[3]]")
 check("ab[*-*]")
 check("cd[x]")
