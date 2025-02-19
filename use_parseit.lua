@@ -1,7 +1,8 @@
 #!/usr/bin/env lua
 -- use_parseit.lua
 -- Glenn G. Chappell
--- 2025-02-18
+-- Started: 2025-02-18
+-- Updated: 2025-02-19
 --
 -- For CS 331 Spring 2025
 -- Simple Main Program for parseit Module
@@ -148,7 +149,7 @@ check("")
 io.write(dashes.."\n")
 check("print()")
 io.write(dashes.."\n")
-check("println(3)")
+check("println('Yo!')")
 io.write(dashes.."\n")
 check("print('abc','def')print('xyz')println()")
 io.write(dashes.."\n")
