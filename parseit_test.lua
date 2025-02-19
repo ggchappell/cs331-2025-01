@@ -1,7 +1,8 @@
 #!/usr/bin/env lua
 -- parseit_test.lua
 -- Glenn G. Chappell
--- 2025-02-18
+-- Started: 2025-02-18
+-- Updated: 2025-02-19
 --
 -- For CS 331 Spring 2025
 -- Test Program for Module parseit
@@ -1870,6 +1871,20 @@ function test_expr_complex(t)
        {NUMLITxVAL,"15e3"}}},{RNDxCALL,{RNDxCALL,{RNDxCALL,
        {READNUMxCALL}}}}}},
      "Complex expression with print")
+    checkParse(t,
+    "a=b[1&&2+(3%-4*!(5/+6==(7!=((8))<9<=0)>1)>=2||c[d[e[f[g[h]]]]])]",
+      true, true,
+     {PROGRAMx,{ASSNxSTMT,{SIMPLExVAR,"a"},{ARRAYxVAR,"b",
+       {{BINxOP,"&&"},{NUMLITxVAL,"1"},{{BINxOP,"+"},{NUMLITxVAL,"2"},
+       {{BINxOP,"||"},{{BINxOP,">="},{{BINxOP,"*"},{{BINxOP,"%"},
+       {NUMLITxVAL,"3"},{{UNxOP,"-"},{NUMLITxVAL,"4"}}},{{UNxOP,"!"},
+       {{BINxOP,">"},{{BINxOP,"=="},{{BINxOP,"/"},{NUMLITxVAL,"5"},
+       {{UNxOP,"+"},{NUMLITxVAL,"6"}}},{{BINxOP,"<="},{{BINxOP,"<"},
+       {{BINxOP,"!="},{NUMLITxVAL,"7"},{NUMLITxVAL,"8"}},
+       {NUMLITxVAL,"9"}},{NUMLITxVAL,"0"}}},{NUMLITxVAL,"1"}}}},
+       {NUMLITxVAL,"2"}},{ARRAYxVAR,"c",{ARRAYxVAR,"d",{ARRAYxVAR,"e",
+       {ARRAYxVAR,"f",{ARRAYxVAR,"g",{SIMPLExVAR,"h"}}}}}}}}}}}},
+     "Complex expression inside brackets")
     checkParse(t, "x=a==b+c*+d!=e-/-g<h+i%+j",
       false, false, nil,
       "Bad complex expression: misc #1")
