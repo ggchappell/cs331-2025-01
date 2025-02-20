@@ -1,6 +1,7 @@
 -- parseit.lua  SKELETON
 -- Glenn G. Chappell
--- 2025-02-18
+-- Started: 2025-02-18
+-- Updated: 2025-02-19
 --
 -- For CS 331 Spring 2025
 -- Solution to Assignment 4, Exercise A
@@ -143,7 +144,7 @@ end
 
 local parse_program
 local parse_statement
-local parse_printt_arg
+local parse_print_arg
 local parse_expr
 local parse_compare_expr
 local parse_arith_expr
