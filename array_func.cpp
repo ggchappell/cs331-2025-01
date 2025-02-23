@@ -7,7 +7,7 @@
 
 #include <iostream>
 using std::cout;
-using std::endl;
+using std::cin;
 #include <functional>
 using std::function;
 #include <vector>
@@ -43,11 +43,15 @@ int main()
     // Set our variable
     int n = 7;
 
+    cout << "Demonstration of Array of Lambda Functions in C++\n";
+    cout << "See the source code for details.\n";
+    cout << "\n";
+
     // Call one of the above, using a vector look-up
     cout << "n = " << n << "\n";
     cout << "Result of function call: ";
     funcs[n]();
-    cout << endl;
+    cout << "\n";
 
     // Wait for user
     cout << "Press ENTER to quit ";

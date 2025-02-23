@@ -7,7 +7,6 @@
 
 #include <iostream>
 using std::cout;
-using std::endl;
 using std::cin;
 #include <functional>
 using std::function;
@@ -49,18 +48,18 @@ void userPause()
 int main()
 {
     cout << "Demonstration of Closures in C++ "
-         << "(2011 Standard and later)" << endl;
-    cout << "See the source code for details." << endl;
-    cout << endl;
+         << "(2011 Standard and later)\n";
+    cout << "See the source code for details.\n";
+    cout << "\n";
 
     auto times2 = multiply(2);
     auto triple = multiply(3);
     auto times7 = multiply(7);
 
-    cout << "300 times 2 is " << times2(300) << "." << endl;
-    cout << "25 tripled is " << triple(25) << "." << endl;
-    cout << "10 times 7 is " << times7(10) << "." << endl;
-    cout << endl;
+    cout << "300 times 2 is " << times2(300) << ".\n";
+    cout << "25 tripled is " << triple(25) << ".\n";
+    cout << "10 times 7 is " << times7(10) << ".\n";
+    cout << "\n";
 
     // Wait for user
     cout << "Press ENTER to quit ";

@@ -25,6 +25,10 @@ int main()
     // ******************************************************
     regex re1("ab*c");  // Our regular expression
 
+    cout << "Demonstration of Regexes in C++\n";
+    cout << "Type strings to attempt to match.\n";
+    cout << "See the source code to change the regex used.\n";
+    cout << "\n";
     // Read stdin & print info on each line matched by above regex.
     while (true)
     {
