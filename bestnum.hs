@@ -12,8 +12,8 @@ import System.IO  -- for hFlush, stdout
 
 -- bestNum
 -- Repeatedly input a number from the user. If it is the best number,
--- then say that is right and quit. Otherwise, admonish the user and let
--- them try again.
+-- then say that it is right and quit. Otherwise, admonish the user and
+-- let them try again.
 bestNum = do
     putStr "What is the best number? "
     hFlush stdout
