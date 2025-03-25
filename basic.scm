@@ -75,12 +75,12 @@
 ; picture of a call to the procedure. The second argument is an
 ; expression given the code for the procedure.
 
-(define (sqr x)
-  (* x x)
+(define (cube x)
+  (* x x x)
   )
 
 ; Try:
-;   (sqr 6)
+;   (cube 4)
 
 (define (!= a b)
   (not (= a b))
@@ -229,6 +229,7 @@
   )
 
 ; Try:
+;   (sqr 5)
 ;   (mymap sqr '(2 33 -5 50 1 100))
 ; This operation is available as the standard procedure map.
 ; Try:
