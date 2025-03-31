@@ -1,5 +1,5 @@
 #lang scheme
-; macro.scm  UNFINISHED
+; macro.scm
 ; Glenn G. Chappell
 ; Started: 2025-03-28
 ; Updated: 2025-03-31
@@ -162,13 +162,121 @@
 ; ***** Multiple-Pattern Macros *****
 
 
-; MORE TO COME ...
+; define-syntax-rule is a wrapper around define-syntax + syntax-rules.
+; The latter can take multiple patterns beginning with the same
+; identifier. The first pattern that matches is used.
+
+; Here is qlist, expanded version (renamed qlistx).
+
+; qlistx
+; Macro. Just like qlist.
+(define-syntax qlistx
+  (syntax-rules ()
+    [(qlistx . args)
+     'args
+     ]
+    )
+  )
+
+; Try:
+;   (qlistx (+ 1 2) 7 (+ 2 3))
+
+; An example using multiple patterns.
+
+; def12
+; Macro. Define one or two identifiers.
+(define-syntax def12
+  (syntax-rules ()
+    [(def12 s1 e1)
+     (define s1 e1)
+     ]
+    [(def12 s1 e1 s2 e2)
+     (begin (define s1 e1) (define s2 e2))
+     ]
+    )
+  )
+
+; Try:
+;   (def12 x (+ 5 8))
+;   x
+
+; Try:
+;   (def12 a (+ 1 2) b (+ 2 3))
+;   a
+;   b
+
+; defbunch
+; Macro. Define an arbitrary number of identifiers.
+(define-syntax defbunch
+  (syntax-rules ()
+    [(defbunch)
+     (void)
+     ]
+    [(defbunch s1 e1 . rest)
+     (begin
+       (define s1 e1)
+       (defbunch . rest)
+       )
+     ]
+    )
+  )
+
+; Try:
+;   (defbunch a 1 b 2 c (+ 3 3))
+;   c
 
 
 ; ***** Keywords in Macros *****
 
 
-; MORE TO COME ...
+; The list after syntax-rules (which is always empty above) is the list
+; of *keywords*. These are words that only match themselves in a
+; pattern. The identifier being defined is always a keyword; the list
+; allows others to be specified.
+
+; for-each1
+; Macro. For-each loop. Iterates over given list. List to iterate over
+; is not evaluated.
+; Example usage:
+;   (for-each1 n in (2 4 10) (display n) (newline))
+(define-syntax for-each1
+  (syntax-rules (in)
+    [(for-each1 var in () . body)
+     (void)
+     ]
+    [(for-each1 var in (head . tail) . body)
+     (begin
+       (let ([var head])
+         (begin . body)
+         )
+       (for-each1 var in tail . body)
+       )
+     ]
+    )
+  )
+
+; Try:
+;   (for-each1 i in (2 4 10) (display i) (newline))
+
+; for-each2
+; Macro. For-each loop. Iterates over given list. List to iterate over
+; is given as an expression, which is evaluated to obtain the list.
+; Example usage:
+;   (for-each2 n in '(2 4 10) (display n) (newline))
+;   (for-each2 i in (append '(2 4) '(10)) (display i) (newline))
+(define-syntax for-each2
+  (syntax-rules (in)
+    [(for-each2 var in list-expr . body)
+     (eval (append '(for-each1 var in) (list list-expr) 'body))
+     ]
+    )
+  )
+
+; Try:
+;   (for-each2 i in (append '(2 4) '(10)) (display i) (newline))
+
+
+; ***** EXTRA: Symbolic Differentiation Macros *****
 
 
 ; Raise a to the b power: (expt a b)
