@@ -137,23 +137,6 @@ local function elimLeadingNonspace(s)
 end
 
 
--- containsDot
--- Given a string, return true if it contains a dot (".") character,
--- false otherwise. (In Lua 5.2+ this can be done with string.match, but
--- apparently not in Lua 5.1.)
-local function containsDot(s)
-    assert(type(s) == "string")
-
-    for i = 1, s:len() do
-        if s:sub(i,i) == "." then
-            return true
-        end
-    end
-
-    return false
-end
-
-
 -- errMsg
 -- Given an error message, prints it in flagged-error form, with a
 -- newline appended.
@@ -261,6 +244,8 @@ end
 -- Given input line beginning with ":", execute as REPL command. Return
 -- true if execution of REPL should continue; false if it should end.
 local function doReplCommand(line)
+    local suffix = "fmar"  -- Source filename suffix
+
     assert(line:sub(1,1) == ":")
     if line:sub(1,2) == ":e" then
         return false
@@ -279,10 +264,8 @@ local function doReplCommand(line)
             return true
         end
 
-        if fname:sub(fname:len(),fname:len()) == "." then
-            fname = fname .. "fmar"
-        elseif not containsDot(fname) then
-            fname = fname .. ".fmar"
+        if not fname:match("%.") then  -- if fname contains no dot
+            fname = fname .. "." .. suffix
         end
         runFile(fname, true)  -- true: Print execution message
         return true
