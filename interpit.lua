@@ -1,6 +1,7 @@
--- interpit.lua  UNFINISHED
+-- interpit.lua  SKELETON
 -- Glenn G. Chappell
--- 2025-04-06
+-- Started: 2025-04-06
+-- Updated: 2025-04-07
 --
 -- For CS 331 Spring 2025
 -- Interpret AST from parseit.parse
@@ -190,23 +191,67 @@ function interpit.interp(ast, state, util)
     -- interp_program
     -- Given the ast for a program, execute it.
     function interp_program(ast)
-        -- TODO: WRITE THIS!!!
+        assert(type(ast) == "table")
+        assert(ast[1] == PROGRAM)
+
+        for i = 2, #ast do
+            interp_stmt(ast[i])
+        end
     end
 
 
     -- interp_stmt
     -- Given the ast for a statement, execute it.
     function interp_stmt(ast)
-        -- TODO: WRITE THIS!!!
+        local str, funcname, funcbody
+
+        assert(type(ast) == "table")
+
+        if ast[1] == PRINT_STMT or ast[1] == PRINTLN_STMT then
+            for i = 2, #ast do
+                str = eval_print_arg(ast[i])
+                util.output(str)
+            end
+            if ast[1] == PRINTLN_STMT then
+                util.output("\n")
+            end
+        elseif ast[1] == FUNC_DEF then
+            funcname = ast[2]
+            funcbody = ast[3]
+            state.f[funcname] = funcbody
+        elseif ast[1] == FUNC_CALL then
+            funcname = ast[2]
+            funcbody = state.f[funcname]
+            if funcbody == nil then
+                funcbody = { PROGRAM }
+            end
+            interp_program(funcbody)
+        else
+            print("*** UNIMPLEMENTED STATEMENT")
+        end
     end
 
 
     -- eval_print_arg
-    -- Given the AST for an output argument, evaluate it and return the
+    -- Given the AST for a print argument, evaluate it and return the
     -- value, as a string.
     function eval_print_arg(ast)
-        -- TODO: WRITE THIS!!!
-        return "Aardvark"  -- DUMMY
+        local result, str, val
+
+        assert(type(ast) == "table")
+
+        if ast[1] == STRLIT_OUT then
+            str = ast[2]
+            result = str:sub(2, str:len()-1)
+        elseif ast[1] == CHR_CALL then
+            print("*** UNIMPLEMENTED PRINT ARG")
+            result = "ZZZZZ"  -- DUMMY VALUE
+        else  -- Numeric expression
+            val = eval_expr(ast)
+            result = numToStr(val)
+        end
+
+        return result
     end
 
 
@@ -214,8 +259,18 @@ function interpit.interp(ast, state, util)
     -- Given the AST for an expression, evaluate it and return the
     -- value, as a number.
     function eval_expr(ast)
-        -- TODO: WRITE THIS!!!
-        return 42  -- DUMMY
+        local result
+
+        assert(type(ast) == "table")
+
+        if ast[1] == NUMLIT_VAL then
+            result = strToNum(ast[2])
+        else
+            print("*** UNIMPLEMENTED EXPRESSION")
+            result = 999999999  -- DUMMY VALUE
+        end
+
+        return result
     end
 
 
