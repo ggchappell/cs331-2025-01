@@ -1,6 +1,6 @@
 #!/usr/bin/env lua
 -- interpit_test.lua
--- VERSION 2
+-- VERSION 3
 -- Glenn G. Chappell
 -- Started: 2025-04-06
 -- Updated: 2025-04-11
@@ -1126,7 +1126,7 @@ function test_expr(t)
 
     -- Output not #1
     ast = {PROGRAMx, {PRINTxSTMT,
-      {{UNxOP, "not"}, {NUMLITxVAL, "5"}}}}
+      {{UNxOP, "!"}, {NUMLITxVAL, "5"}}}}
     input = {}
     statein = deepcopy(emptystate)
     expoutput = {"0"}
@@ -1136,7 +1136,7 @@ function test_expr(t)
 
     -- Output not #2
     ast = {PROGRAMx, {PRINTxSTMT,
-      {{UNxOP, "not"}, {NUMLITxVAL, "0"}}}}
+      {{UNxOP, "!"}, {NUMLITxVAL, "0"}}}}
     input = {}
     statein = deepcopy(emptystate)
     expoutput = {"1"}
@@ -1146,7 +1146,7 @@ function test_expr(t)
 
     -- Output not not
     ast = {PROGRAMx, {PRINTxSTMT,
-      {{UNxOP, "not"},{{UNxOP, "not"}, {NUMLITxVAL, "0"}}}}}
+      {{UNxOP, "!"},{{UNxOP, "!"}, {NUMLITxVAL, "0"}}}}}
     input = {}
     statein = deepcopy(emptystate)
     expoutput = {"0"}
