@@ -1,0 +1,61 @@
+#!./fulmar.lua
+# guess.fmar
+# Glenn G. Chappell
+# 2025-04-11
+#
+# For CS 331 Spring 2025
+# Fulmar Demo: Number Guessing Game
+
+
+# Range specification. The number to guess will be in the range
+# [rangeMin, rangeMax].
+rangeMin = 1
+rangeMax = 1000
+
+
+# Function gameRound
+# Play one round of the game.
+func gameRound()
+    num = rnd(rangeMax+1-rangeMin) + rangeMin
+    print("I'm thinking of a number from ")
+    println(rangeMin, " to ", rangeMax, ".")
+    println("Try to guess it.")
+    success = 0  # False
+    while !success
+        println()
+        print("Your guess: ")
+        guess = readnum()
+        if guess == num
+            println(guess, " is right!")
+            success = 1  # True
+        elif guess > num
+            println("No, ", guess, " is too large. Guess again.")
+        else
+            println("No, ", guess, " is too small. Guess again.")
+        end
+    end
+end
+
+
+# Main Program
+# Do rounds of the game until the user indicates quitting.
+
+gameOver = 0  # False
+while !gameOver
+    gameRound()
+    println()
+    print("Would you like to play again? ")
+    print("[1 to play, 0 or blank line to quit] ")
+    answer = readnum()
+    if answer == 0
+        gameOver = 1  # True
+    end
+end
+
+
+# Wait for user
+# (unnecessary with fulmar.lua, so commented out)
+#println()
+#print("Press ENTER to quit ")
+#dummy = readnum()
+

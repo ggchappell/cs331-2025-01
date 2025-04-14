@@ -1,0 +1,18 @@
+#!./fulmar.lua
+# hello.fmar
+# Glenn G. Chappell
+# 2025-04-11
+#
+# For CS 331 Spring 2025
+# Hello-world in Fulmar
+
+
+println("Hello, world!")
+
+
+# Wait for user
+# (unnecessary with fulmar.lua, so commented out)
+#println()
+#print("Press ENTER to quit ")
+#dummy = readnum()
+

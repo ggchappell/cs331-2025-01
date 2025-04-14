@@ -1,0 +1,65 @@
+#!./fulmar.lua
+# collatz.fmar
+# Glenn G. Chappell
+# 2025-04-11
+#
+# For CS 331 Spring 2025
+# Fulmar Demo: Collatz Sequences
+
+
+# Function collatz
+# Given a positive integer k, applies the Collatz function once and
+# returns the result. k is not modified.
+func collatz()
+    if k % 2 == 0
+        return k/2
+    else
+        return 3*k + 1
+    end
+end
+
+
+# Function printCollatzSequence
+# Given a positive integer n, print the Collatz sequence beginning at n
+# and ending at 1, items separated by blanks and ending with a newline.
+# Modifies variable k.
+func printCollatzSequence()
+    k = n
+    while k != 1
+        print(k, " ")
+        k = collatz()
+    end
+    println(k)
+end
+
+
+# Main Program
+# Repeatedly input a number and prints its Collatz sequence. End by
+# entering zero or a blank line.
+
+# Print header
+println("Fulmar - Collatz Sequences Demo")
+println()
+
+# Input & sequence printing
+done = 0  # False
+while !done
+    print("Type a positive integer (0 or blank line to end): ")
+    n = readnum()
+    if n <= 0
+        done = 1  # True
+    else
+        println()
+        println("Collatz sequence for ", n, ":")
+        printCollatzSequence()
+        println()
+    end
+end
+
+
+# Wait for user
+# (unnecessary with fulmar.lua, so commented out)
+#println()
+#print("Press ENTER to quit ")
+#dummy = readnum()
+

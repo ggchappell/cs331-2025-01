@@ -1,0 +1,51 @@
+#!./fulmar.lua
+# fibo.fmar
+# Glenn G. Chappell
+# 2025-01-10
+#
+# For CS 331 Spring 2025
+# Compute Fibonacci Numbers
+
+
+# The Fibonacci number F(n), for n >= 0, is defined by F(0) = 0,
+# F(1) = 1, and for n >= 2, F(n) = F(n-2) + F(n-1).
+
+
+# fibo (param in variable n)
+# Return Fibonacci number F(n).
+func fibo()
+    currfib = 0
+    nextfib = 1
+    i = 0  # Loop counter
+    while i < n
+        # Advance (currfib, nextfib)
+        tmp = currfib + nextfib
+        currfib = nextfib
+        nextfib = tmp
+        i = i+1
+    end
+    return currfib
+end
+
+
+# Main program
+# Print some Fibonacci numbers
+how_many_to_print = 20
+
+println("Fibonacci Numbers")
+
+j = 0  # Loop counter
+while j < how_many_to_print
+    n = j  # Set param for fibo
+    ff = fibo()
+    println("F(", j, ") = ", ff)
+    j = j+1
+end
+
+
+# Wait for user
+# (unnecessary with fulmar.lua, so commented out)
+#println()
+#print("Press ENTER to quit ")
+#dummy = readnum()
+

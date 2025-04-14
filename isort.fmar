@@ -1,0 +1,106 @@
+#!./fulmar.lua
+# isort.fmar
+# Glenn G. Chappell
+# 2025-04-11
+#
+# For CS 331 Spring 2025
+# Fulmar Demo: Insertion Sort
+
+
+# All functions deal with array "data", whose length is given by
+# variable "datalen". We assume datalen >= 0, and items in data have
+# indices 0 .. datalen-1.
+
+
+# Function initData
+# Pushes random values into array data (described above).
+func initData()
+    num_to_push = 22
+    jj = 0
+    while jj < num_to_push
+        v = rnd(100)
+        data[datalen] = v
+        datalen = datalen+1
+        jj = jj+1
+    end
+end
+
+
+# Function printData
+# Output items in array "data" (described above) on a single line, with
+# items separated by blanks, and the entire dataset followed by a
+# newline.
+func printData()
+    jj = 0
+    while jj < datalen
+        if jj > 0
+            print(" ")
+        end
+        print(data[jj])
+        jj = jj + 1
+    end
+    println()
+end
+
+
+# Function insertionSort
+# Sort array data (described above), in ascending order, using
+# Insertion Sort.
+func insertionSort()
+    # i is index of item to insert among earlier items
+    i = 1
+    while i < datalen
+        savedata_i = data[i]  # Save item to insert
+        done = 0              # False; have we found proper spot yet?
+        k = i
+        while k > 0 && !done
+            if (!(savedata_i < data[k-1]))
+                done = 1      # True; Fulmar has no break, so we do this
+            else
+                data[k] = data[k-1]
+                k = k-1
+            end
+        end
+        # k is the spot where savedata_i goes; put it there
+        data[k] = savedata_i
+
+        i = i+1
+    end
+end
+
+
+# Main Program
+# Print unsorted data, sort it, and print result.
+
+# Print heading
+println("Fulmar - Insertion Sort Demo")
+println()
+
+# Make initial data
+initData()
+
+# Print initial data
+println("Initial data:")
+printData()
+println()
+
+# Sort
+println("Sorting")
+insertionSort()
+println()
+
+# Print sorted data
+println("Sorted data:")
+printData()
+println()
+
+# Print final message
+println("Run this program again to sort with different data.")
+
+
+# Wait for user
+# (unnecessary with fulmar.lua, so commented out)
+#println()
+#print("Press ENTER to quit ")
+#dummy = readnum()
+
