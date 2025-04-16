@@ -1,0 +1,67 @@
+#!./fulmar.lua
+# check_fulmar.fmar
+# Glenn G. Chappell
+# 2025-04-16
+#
+# For CS 331 Spring 2025
+# A Fulmar Program to Run
+# Used in Assignment 7, Exercise A
+
+
+# initData - Initialize data arrays
+func initData()
+    arrlen = 26  # Length of arrays
+
+    a[0] =  196   a[1] =  186   a[2] =  315
+    a[3] =  230   a[4] =  821   a[5] =  649
+    a[6] =  295   a[7] =  955   a[8] =  196
+    a[9] =  531   a[10] = 490   a[11] = 740
+    a[12] = 747   a[13] = 238   a[14] = 667
+    a[15] = 166   a[16] = 766   a[17] = 398
+    a[18] = 646   a[19] = 249   a[20] = 798
+    a[21] = 266   a[22] = 853   a[23] = 441
+    a[24] = 370   a[25] = 254
+
+    b[0] =  449   b[1] =  293   b[2] =  443
+    b[3] =  919   b[4] =  207   b[5] =  205
+    b[6] =  514   b[7] =  382   b[8] =  246
+    b[9] =  894   b[10] = 351   b[11] = 96
+    b[12] = 926   b[13] = 918   b[14] = 429
+    b[15] = 713   b[16] = 174   b[17] = 331
+    b[18] = 639   b[19] = 799   b[20] = 751
+    b[21] = 148   b[22] = 732   b[23] = 171
+    b[24] = 429   b[25] = 96
+end
+
+
+# Main Program
+# Print a secret message -- somehow.
+
+# Initialize data
+initData()
+
+# Print header
+println("Secret message #5:")
+println()
+
+# Print the secret message (in a mysterious manner)
+aa = 5
+bb = 9
+ii = 0
+while ii < arrlen
+    cc = (aa + bb) % 23
+    val = a[ii] - b[ii] + a[ii-1] + b[ii-1] + 2347 + cc
+    print(chr(32 + val % 94))
+    aa = bb
+    bb = cc
+    ii = ii + 1
+end
+println()
+
+
+# Wait for user
+# (unnecessary with fulmar.lua, so commented out)
+#println()
+#print("Press ENTER to quit ")
+#dummy = readnum()
+
