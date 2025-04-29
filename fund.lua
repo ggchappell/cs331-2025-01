@@ -67,9 +67,9 @@ abc = 3.2          -- type number
 t = type(abc)      -- t is a string: "number"
 io.write(t.."\n")
 
--- Uncomment the following. When executed, a type error should be
--- flagged. But since Lua has dynamic type checking, the above output
--- will be done before the type error is flagged.
+-- Uncomment the following. When executed, a type error is flagged. But
+-- since Lua has dynamic type checking, the above output will be done
+-- before the type error is flagged.
 
 --io.write(1 / "abc")
 
@@ -215,7 +215,7 @@ capitals = { ["Alaska"]="Juneau", ["Kansas"]="Topeka" }
 -- associated value is "Juneau".
 
 -- Access table values using braces.
-io.write(capitals['Alaska'] .. "\n")  -- Should print "Juneau".
+io.write(capitals['Alaska'] .. "\n")  -- prints "Juneau".
 
 -- Set table values similarly.
 capitals["New Jersey"] = "Trenton"
@@ -234,13 +234,13 @@ function hh()
     io.write("Hello there!\n")
 end
 mixed.hello = hh
-mixed.hello()  -- Function call; should print "Hello there!"
+mixed.hello()  -- Function call; prints "Hello there!"
 
 -- We can declare a function to be a table member directly
 function mixed.goodbye()
     io.write("Goodbye!\n")
 end
-mixed.goodbye()  -- Should print "Goodbye!"
+mixed.goodbye()  -- Prints "Goodbye!"
 
 -- Iterate through the items in a table with "pairs"
 tt = { [5]="abc", ['def']=4 }

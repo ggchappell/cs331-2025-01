@@ -110,7 +110,7 @@ sq(X, Y) :- Y is X*X.
 %   ?- sq(3, 5).
 %   ?- sq(4, X).
 %   ?- sq(X, 16).
-% The last line above should result in an error.
+% The last line above will result in an error.
 
 
 % ***** Negation *****
@@ -143,11 +143,11 @@ cousin(A, B) :-
 %   ?- X is 7/2.
 %   ?- X is 7//2.
 %   ?- X is 7.5//2.
-% The last line above should result in an error.
+% The last line above will result in an error.
 
 % gcd(+a, +b, ?c)
-% gcd(A, B, C) means the GCD of A and B is C. A, B should be nonnegative
-% integers. C should be a nonnegative integer or a free variable.
+% gcd(A, B, C) means the GCD of A and B is C. A, B are nonnegative
+% integers. C is a nonnegative integer or a free variable.
 gcd(0, B, B).
 gcd(A, B, C) :- A > 0, BMODA is B mod A, gcd(BMODA, A, C).
 
@@ -163,5 +163,5 @@ gcd(A, B, C) :- A > 0, BMODA is B mod A, gcd(BMODA, A, C).
 %   ?- gcd(30, 105, 14).
 %   ?- gcd(30, 105, X).
 %   ?- gcd(X, 105, 15).
-% The last line above should result in an error.
+% The last line above will result in an error.
 

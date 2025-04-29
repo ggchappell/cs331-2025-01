@@ -26,7 +26,7 @@ function<int(int)> multiply(int k)
     // portion of the environment in which it is defined. The "[=]"
     // above means that the closure captures a copy of every variable it
     // uses. Replace this with "[k]" to specify that only a copy of k
-    // should be captured. Replace with "[&k]" to capture k by reference
+    // is to be captured. Replace with "[&k]" to capture k by reference
     // -- a VERY BAD IDEA in this particular case, as k is a local
     // variable of function multiply.
 

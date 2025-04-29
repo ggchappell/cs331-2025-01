@@ -245,9 +245,9 @@ function lexer.lex(program)
     -- A function with a name like handle_XYZ is the handler function
     -- for state XYZ
 
-    -- State DONE: lexeme is done; this handler should not be called.
+    -- State DONE: lexeme is done; this handler must not be called.
     local function handle_DONE()
-        error("'DONE' state should not be handled\n")
+        error("'DONE' state must not be handled\n")
     end
 
     -- State START: no character read yet.

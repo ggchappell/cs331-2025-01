@@ -80,7 +80,7 @@ local SIMPLE_VAR = 3
 
 -- advance
 -- Go to next lexeme and load it into lexstr, lexcat.
--- Should be called once before any parsing is done.
+-- Must be called once before any parsing is done.
 -- Function init must be called before this function is called.
 local function advance()
     -- Advance the iterator

@@ -110,7 +110,7 @@ end
 -- See the Assignment 4 description for the AST Specification.
 --
 -- THIS FUNCTION IS INTENDED FOR USE IN DEBUGGING ONLY!
--- IT SHOULD NOT BE CALLED IN THE FINAL VERSION OF THE CODE.
+-- IT MUST NOT BE CALLED IN THE FINAL VERSION OF THE CODE.
 local function astToStr(x)
     local symbolNames = {
         "PROGRAM", "PRINT_STMT", "PRINTLN_STMT", "RETURN_STMT",

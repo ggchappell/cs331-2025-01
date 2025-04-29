@@ -54,8 +54,8 @@ plus_minus_times a b c d = a_plus_b * c_minus_d  where
 -- Try:
 --   plus_minus_times 1 2 3 4
 --   a_plus_b
--- Above, the first should work, but the second should result in an
--- error; the definition of a_plus_b is *local*.
+-- Above, the first works, but the second results in an error; the
+-- definition of a_plus_b is *local*.
 
 -- We can nest blocks
 
@@ -126,7 +126,7 @@ infixl 6 +$+  -- Left associative, same precedence as +
 
 -- Try:
 --   addem (2 3)
--- You should get an error.
+-- This above will produce an error.
 
 add2 = addem 2
 

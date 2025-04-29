@@ -52,7 +52,7 @@ alternatingSums :: Num a => [a] -> (a, a)
     alternatingSums xs = fold* ... xs  where
         ...
 
-  Above, "..." should be replaced by other code. "fold*" must be one of
+  Above, "..." must be replaced by other code. "fold*" must be one of
   the following: foldl, foldr, foldl1, foldr1.
 
   Here is an implementation of alternatingSums that works, but does not

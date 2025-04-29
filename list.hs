@@ -46,8 +46,8 @@ a4 = [fa1, fa2, fa3]     -- List of functions (all same function type!)
 
 -- Try:
 --   bad = [1, [2]]
--- The above should produce an error, since the two list items do not
--- have the same type.
+-- The above will produce an error, since the two list items do not have
+-- the same type.
 
 -- The type of a list is written as brackets around type of an item.
 -- Try:
@@ -119,7 +119,7 @@ sc1' = ['a', 'b', 'c']   -- Same as sc1
 --   "abc" ++ "def"
 --   [1,2,3] ++ [4,5,6]
 --   "abc" ++ [4,5,6]
--- The last line above should produce an error, since the items in the
+-- The last line above will result in an error, since the items in the
 -- desired list do not all have the same type.
 
 -- Range syntax uses ".."

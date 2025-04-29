@@ -134,9 +134,8 @@ gcd(A, B, C) :- A > 0, BMODA is B mod A, gcd(BMODA, A, C).
 % And here is a rewritten version, using cut:
 
 % gcd2(+a, +b, ?c)
-% gcd2(A, B, C) means the GCD of A and B is C. A, B should be
-% nonnegative integers. C should be a nonnegative integer or a free
-% variable.
+% gcd2(A, B, C) means the GCD of A and B is C. A, B are nonnegative
+% integers. C is a nonnegative integer or a free variable.
 gcd2(0, B, B) :- !.
 gcd2(A, B, C) :- A > 0, BMODA is B mod A, gcd2(BMODA, A, C).
 

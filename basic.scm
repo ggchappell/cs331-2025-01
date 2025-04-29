@@ -25,8 +25,8 @@
                   expression))
 
 ; Scheme code consist of expressions. Form a nontrivial expression using
-; a list. The first item should evaluate to a procedure. The rest of the
-; items are its arguments. Each item is evaluated; then the procedure is
+; a list. The first item evaluates to a procedure. The rest of the items
+; are its arguments. Each item is evaluated; then the procedure is
 ; called with the arguments.
 
 ; Symbol + evaluates to a procedure that returns the sum of its

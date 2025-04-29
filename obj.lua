@@ -75,7 +75,7 @@ t = mt.new()
 
 -- What happens when we call member t.count_to? There is no t.count_to,
 -- so the metatable will be used.
-io.write('The following should print "1 2 3 4 5 6":\n  ');
+io.write('The following prints "1 2 3 4 5 6":\n  ');
 t.count_to(6)
 
 
@@ -97,8 +97,8 @@ end
 
 t:increment_x()
 
--- t.x was 3. We incremented it. The following should print "4":
-io.write("t.x = " .. t.x .. " (should be 4)\n")
+-- t.x was 3. We incremented it. The following prints "4":
+io.write("t.x = " .. t.x .. " (needs to be 4)\n")
 
 -- The colon operator is particularly useful when using a metatable. A
 -- function that is a member of the metatable of table t needs to know

@@ -242,7 +242,7 @@ end
 
 -- doReplCommand
 -- Given input line beginning with ":", execute as REPL command. Return
--- true if execution of REPL should continue; false if it should end.
+-- true if execution of REPL needs to continue; false if not.
 local function doReplCommand(line)
     local suffix = "fmar"  -- Source filename suffix
 
